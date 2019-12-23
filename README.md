@@ -20,15 +20,15 @@ Using the library Parser to loop over the whole dataset inside local directories
 
 ### Exploring
 I moved on to exploratory analysis using some plots from NXViz, which is a visualization library that sits on top of NetworkX.  I created 3 visualizations, an Arc plot, a Circos plot, and a Network map, for looking at the shape and density of a network using the whole dataset.  
-http://localhost:8888/view/Desktop/Projects/Fraud_Detection/Email-Fraud-Detection/map1.png
+![map1](map1.png)
 
 Given the above complexity, these plots didn't really let me see anything particularly useful except that the dimensionality of the problem is so complex, even a network map was insufficient.  We took a slice of the heaviest 1,000 edges and created the below plot instead.
-http://localhost:8888/view/Desktop/Projects/Fraud_Detection/Email-Fraud-Detection/map2.png
+![map2](map2.png)
 
 At the center of the second map, is one of the head traders for Enron, specializing in Natural Gas.  Less than a week before the bankruptcy was declared he earned the single highest bonus ever to be paid to a single trader at Enron; some $8mm+.  Individuals with that much influence are often considered to be high risk for fraud; simply, the number of connections in the organization makes it easy to hide activity or for the individuals to exert influence where there may be a conflict on interest, both enabling fraud.  
 
 I was able to use NLTK to create frequency distributions for the common words used in the whole dataset. Even from something simple as this can show, visually that something was going on.  Using this distribution, I was able to create a wordcloud to cleary display my findings.  
-http://localhost:8888/view/Desktop/Projects/Fraud_Detection/Email-Fraud-Detection/cloud1.png
+![cloud1](cloud1.png)
 
 I have spent over a decade in corporate finance and from personal expereince, the word 'problems' is not one people use in emails in a healthy organization.The __kathy__ who is front and center of the cloud was implicated in the Enron scandal, over $200,000 was clawed back from her personal bank accounts for her participation in fraudlent deals.  
 
