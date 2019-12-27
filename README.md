@@ -1,11 +1,7 @@
 # Email-Fraud-Detection
 Utilizing the Enron Emails to create a Fraud Detection model.
-
-<<<<<<< HEAD
 ![Enron logo1](images/Enron%20logo1.png)
-=======
-http://localhost:8888/view/Desktop/Projects/Fraud_Detection/Email-Fraud-Detection/Enron%20logo1.png
->>>>>>> 9b38d1cdcb8aab9e22cb68931aa7496084570435
+
 
 
 ## Why does this matter?
@@ -18,6 +14,7 @@ Using the case as a study and example of the magnificant way some companeis can 
 ## Source Data
 The dataset we are reviewing is the remaining body of corporate emails mostly between 1997-2001. The remaining body contains data from about 150 users, mostly senior management of Enron, and contains over 500k individual emails. This data was originally made public, by the Federal Energy Regulatory Commission during its investigation. You can find the source data here:  https://www.cs.cmu.edu/~enron/
 
+For readability and ease of use, the project is organized into four parts.  The reader is recommended to follow the notebooks in order.
 
 ## Natural Language Processing
 Using the library Parser to loop over the whole dataset inside local directories appending each email section to a list and concatenating further into a dataframe.  Most of the time spent working with the data was cleaning and scrubbing emails.  In terms of text, they are particularly messy.  
@@ -28,34 +25,42 @@ I moved on to exploratory analysis using some plots from NXViz, which is a visua
 ![map1](images/map1.png)
 
 Given the above complexity, these plots didn't really let me see anything particularly useful except that the dimensionality of the problem is so complex, even a network map was insufficient.  We took a slice of the heaviest 1,000 edges and created the below plot instead.
-![map2](images/map2.png)
-=======
-![map1](map1.png)
+
+![map1](images/map1.png)
 
 Given the above complexity, these plots didn't really let me see anything particularly useful except that the dimensionality of the problem is so complex, even a network map was insufficient.  We took a slice of the heaviest 1,000 edges and created the below plot instead.
-![map2](map2.png)
->>>>>>> 9b38d1cdcb8aab9e22cb68931aa7496084570435
+![map2](images/map2.png)
+
 
 At the center of the second map, is one of the head traders for Enron, specializing in Natural Gas.  Less than a week before the bankruptcy was declared he earned the single highest bonus ever to be paid to a single trader at Enron; some $8mm+.  Individuals with that much influence are often considered to be high risk for fraud; simply, the number of connections in the organization makes it easy to hide activity or for the individuals to exert influence where there may be a conflict on interest, both enabling fraud.  
 
 I was able to use NLTK to create frequency distributions for the common words used in the whole dataset. Even from something simple as this can show, visually that something was going on.  Using this distribution, I was able to create a wordcloud to cleary display my findings.  
-<<<<<<< HEAD
 ![cloud1](images/cloud1.png)
-=======
-![cloud1](cloud1.png)
->>>>>>> 9b38d1cdcb8aab9e22cb68931aa7496084570435
+
 
 I have spent over a decade in corporate finance and from personal expereince, the word 'problems' is not one people use in emails in a healthy organization.The __kathy__ who is front and center of the cloud was implicated in the Enron scandal, over $200,000 was clawed back from her personal bank accounts for her participation in fraudlent deals.  
 
 
-<<<<<<< HEAD
-=======
 
-
-
-
-
->>>>>>> 9b38d1cdcb8aab9e22cb68931aa7496084570435
 ### Model Prep
 To utilize any machine learning models on the data, the email bodies had to be converted to vectors for processing.  I chose a TF-IDF vectorization which incorporates the fact that some words are used more frequently regardless of the text body they appear in.  
+
+Below is a visualization that represents the vectors created.  We will revisit this visualization later once the clustering is processed.  
+![vectors](images/Vector_scatter1.png)
+
+Another useful step is to force the vectors back into words and use the scores to order the most common words.  After doing that, the below wordcloud is created.  
+![top cloud](images/cloud2.png)
+
+## Machine Learning
+
+### Supervised Learning - K-Means Clustering 
+The goal here is hopefully to sort everything into sections, people and important words. I'll use these later on as labels in a supervised learning task.
+
+K-means is a clustering algorithm that aims to partition the data into _k_ clusters. These clusters are organized by separating each observation and linking it to the _cluster_ with the nearest mean.
+
+I'll actually use the mini-batch Kmeans algorithm from sklearn. This way I won't read the whole dataset into memory at the same time. Given the data size that I'm working with, this will save quite a bit of computational efficiency.  I initalized the algorithm with a batch size of 500 and ran 100 iterations.
+
+This is a great oppoirtunity to review the same scatter plot we used before, though this time color coding the clusters.
+![cluster](cluster2.png)
+
 
