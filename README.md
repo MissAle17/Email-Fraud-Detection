@@ -54,13 +54,20 @@ Another useful step is to force the vectors back into words and use the scores t
 ## Machine Learning
 
 ### Supervised Learning - K-Means Clustering 
-The goal here is hopefully to sort everything into sections, people and important words. I'll use these later on as labels in a supervised learning task.
+The goal here is hopefully to sort everything into sections, people and important words. I'll use these later on as labels in a supervised learning task.  Note here that I needed to create a dense matrix from an extremely large sparse matrix.  Numpy simply won't do it on the size of the data I have.  I took the largest slices of the matrix that both my personal computer and the kaggle remote server I used could handle.  
 
 K-means is a clustering algorithm that aims to partition the data into _k_ clusters. These clusters are organized by separating each observation and linking it to the _cluster_ with the nearest mean.
 
-I'll actually use the mini-batch Kmeans algorithm from sklearn. This way I won't read the whole dataset into memory at the same time. Given the data size that I'm working with, this will save quite a bit of computational efficiency.  I initalized the algorithm with a batch size of 500 and ran 100 iterations.
+I'll actually use the mini-batch Kmeans algorithm from sklearn. This way I won't read the whole dataset into memory at the same time. Given the data size that I'm working with, this will save quite a bit of computational efficiency.  I initalized the algorithm with 2 clusters, a batch size of 500, and ran 100 iterations.
 
 This is a great oppoirtunity to review the same scatter plot we used before, though this time color coding the clusters.
-![cluster](cluster2.png)
+![cluster](images/cluster2.png)
+
+You can see that the clustering algorithm did a fair job separating the important things from the nonsense.  One can extrapolate that given the computing power to run the whole dataset that it would do even better.
+
+Here's a clear visual of the top words ranked by TF-IDF score for each cluster.  These were well done and I was comfortable using the results as the __true__ labels in the supervised learning task.
+![cluster bar](images/cluster_bar.png)
+
+
 
 
