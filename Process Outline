@@ -1,0 +1,68 @@
+
+Full Process Outline
+
+
+
+Part 1 - Obtaining and Scrubbing
+
+1. Looping over the collection of files for the Enron email data set
+2. Created function to parse the emails into lists, then looped it over all the files
+3. Saved all the email sections into a dataframe
+4. Reviewed summary statistics and dropped nan's
+5. Scrubbed date and time stamp from the emails
+6. Visualized the email traffic by date using a scatter plot
+7. Counted the number of emails per day in a distplot
+8. Separated recipients into 3 columns as the top 3 recepients in each email and added them back into the dataframe
+9. Created 3 visualizations, an Arc plot, a Circos plot, and a Network map, for looking at the shape and density of a network using the whole dataset
+10. Pulled the top 1,000 edges and their nodes to make a new trio of network plots as the full dataset was too dense to review
+11. Calculated degree centrality and made a list of top senders and top recipients using centrality as the metric
+12. Stored necessary variables and saved dataframe as a .csv for use in other notebooks
+
+
+Part 2 - Scrubbing and Exploration
+
+13. Loaded saved files and variables
+14. Find the top sender to use as a test case since the dataset is so large
+15. Tokenize text and process test case using the frequency distribution in NLTK
+16. Repeat with the full dataset
+17. Revise text body by removing additional words and characters that were not part of the stop word list 
+18. Run tokenization and frequency distributoin again.
+19. Review top words using a bar graph
+20. Utilizing the WordCloud library to create a word cloud for the top words
+21. Revised the wordcloud by making the text all lowercase.
+22. Storing variables for use in other notebooks
+
+Part 3  - Scrubbing and Exploration
+
+23. Loaded saved files and variables
+24. Review the dimension of the dataset
+25. Using the NLTK methods, implement part of speech tagging and named entity chunking on test case
+26. Both tag and chunk the top 2,000 words
+27. Implement the tagging on the full email body set, including checkpoints
+28. Use a cumulative distribution to review top word frequency
+
+
+Part 4 - Modeling and Interpretation
+
+29. Open saved dataframe from the .csv file
+30. Vectorize the email bodies using the TFIDF vectorizer from sklearn
+31. Use PCA to make the coordinates so we can plot the vectors in matplot
+32. Force vectors into a dataframe with their scores
+33. Use the dataframe as weightings and features for a new wordcloud image
+34. Initializing a 2-cluster K-means object to work on the 10,000 x 10,000 word matrix we created 
+35. Plotting the weightings from our algorithm with each cluster a different color
+36. Rerunning the previous steps with a larger slice of the data
+37. Adding the top features to a new dataframe with the scores produced by the algorithm
+38. Remake the dataframe sorted by descending scores
+39. Create a list of dataframes by cluster and add the cluster as a new column
+40. Plot top text in each cluster
+41. Save the dataframes for use in supervised machine learning as well as our variables as .csv files
+42. Load dependent and independent variables from .csv files
+43. Convert to a list and matrix respectively
+44. Split the data into a training and test set
+45. Fit the k-nearest neighbors model from sklearn using training set
+46. Use the model to predict the cluster on the test set
+47. Print the model accuaracy scores and evaluate
+48. Business implications and recomendations
+49. Possible future analysis
+50. Process outline

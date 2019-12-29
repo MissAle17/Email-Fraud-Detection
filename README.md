@@ -53,7 +53,7 @@ Another useful step is to force the vectors back into words and use the scores t
 
 ## Machine Learning
 
-### Supervised Learning - K-Means Clustering 
+### Unsupervised Learning - K-Means Clustering 
 The goal here is hopefully to sort everything into sections, people and important words. I'll use these later on as labels in a supervised learning task.  Note here that I needed to create a dense matrix from an extremely large sparse matrix.  Numpy simply won't do it on the size of the data I have.  I took the largest slices of the matrix that both my personal computer and the kaggle remote server I used could handle.  
 
 K-means is a clustering algorithm that aims to partition the data into _k_ clusters. These clusters are organized by separating each observation and linking it to the _cluster_ with the nearest mean.
@@ -69,5 +69,25 @@ Here's a clear visual of the top words ranked by TF-IDF score for each cluster. 
 ![cluster bar](images/cluster_bar.png)
 
 
+### Supervised Learning - K-Nearest Neighbors
+As a classification algorithm, K-nearest neighbors, produces a result that is a class 'membership'. The words are classified by a vote of its neighbors, with the word being assigned to the class most common among its k nearest neighbors (k is a positive integer, typically small). Additionally, KNN is a lazy learning algorithm, where the function is only approximated locally and all computation is deferred until classification, a desirable feature for a dataset so large.
 
+I split the data into a training set and test set then initialized using 3 nearest neighbors.  The overall accuracy was over 97% and I included a section of classification report and the confusion matrix below.  
 
+    accuracy                           0.97     99111
+   macro avg       0.94      0.93      0.94     99111
+weighted avg       0.97      0.97      0.97     99111
+
+![confusion](images/confusion1.png)
+
+## Conclusion and Implications
+This means the model can be used as an efficient method to review email's in order to find people worth investigating.
+The Kmeans algorithm separated the email body into people and words. These people who were say in the top 20, were all implicated in some way during the Enron scandal in 2001. Then to make our future selves more efficient we took those clusters, called them 'true' labels in the KNN algorithm and used that to look at the words. With over 97% accuracy we were able to classify these words as important or not.
+
+A business should be able to take new emails and find people who might be worth a second look using the model.  The application in Fraud and Risk management is very clear.  A company can use a trained algorithm like this to find the people who may be at risk of committing fraud.  It could be that the person is really in a central position and has access to a large amount of sensitive data, it could also be the person is a 'deal executor' and has significant power over the bottomline.  Whatever the reason, if an algorithm pair like this suggests a person is worth reviewing the next step would be to have a fraud analyst do a more in depth investigation.  The machine learning is great first step and frees up business resources for other activities, but it does not eliminate the need for human intervention.
+
+![stop](images/stop.png)
+
+## If I had more time...
+
+I could further our work in a number of ways.  First, I could find the necessary resources to be able to run the algorithm on the full dataset.  Second, I could break our clustering and classifying into two steps: find the people of interest and then going on to look at the language they used in their emails to see if that could be a red flag for fraud in itself.  Finally, I could try a number of different clusters or neighbors to see if I could further improve model performance.
