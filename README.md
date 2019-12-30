@@ -2,7 +2,7 @@
 Utilizing the Enron Emails to create a Fraud Detection model.
 ![Enron logo1](images/Enron%20logo1.png)
 
-
+Link to Corresponding Blog post describing the process : https://medium.com/analytics-vidhya/fraud-detection-in-the-enron-emails-786799234812
 
 ## Why does this matter?
 Enron was one of the largest energy companies in the world before it's collapse in 2001.  Not only was it the largest bankruptcy in American history at the time, it also dragged Arthur Anderson,  one of the 5 largest accountancy/audit firms, down with it.  The effects of this gigantic risk management failure are still being felt in the financial and energy markets nearly 2 decades later.  
