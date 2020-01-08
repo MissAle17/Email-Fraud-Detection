@@ -24,9 +24,6 @@ I moved on to exploratory analysis using some plots from NXViz, which is a visua
 
 ![map1](images/map1.png)
 
-Given the above complexity, these plots didn't really let me see anything particularly useful except that the dimensionality of the problem is so complex, even a network map was insufficient.  We took a slice of the heaviest 1,000 edges and created the below plot instead.
-
-![map1](images/map1.png)
 
 Given the above complexity, these plots didn't really let me see anything particularly useful except that the dimensionality of the problem is so complex, even a network map was insufficient.  We took a slice of the heaviest 1,000 edges and created the below plot instead.
 ![map2](images/map2.png)
