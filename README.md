@@ -9,7 +9,7 @@ Enron was one of the largest energy companies in the world before it's collapse 
 
 The board was generally ignorant of what was going on at Enron, and both the guilty CEOs Ken Lay and Jeff Skilling, charmed and bullied the board and their underlings into accepting things the way they were without question.  Culture issues aside, the Enron case had a number of classic fraud 'red flags' that would have indicated something was up years before the collapse.  
 
-Using the case as a study and example of the magnificant way some companeis can fail would benefit us in the future.  We can learn from the mistakes of the past, and better utilize the current resources to find these failures at an early stage.  Ultimately we set out to create a machine learning model that would detect individuals who may need the additional scrutiny of an analyst to review, the email sender as engaging in possible fraud.  Using AI as a first line of defense frees up the resources of the analysts to focus on investigating _warm leads_ or freeing up the human capital resources for use elsewhere in the organization.
+Using the case as a study and example of the magnificent way some companies can fail would benefit us in the future.  We can learn from the mistakes of the past, and better utilize the current resources to find these failures at an early stage.  Ultimately we set out to create a machine learning model that would detect individuals who may need the additional scrutiny of an analyst to review, the email sender as engaging in possible fraud.  Using AI as a first line of defense frees up the resources of the analysts to focus on investigating _warm leads_ or freeing up the human capital resources for use elsewhere in the organization.
 
 ## Source Data
 The dataset we are reviewing is the remaining body of corporate emails mostly between 1997-2001. The remaining body contains data from about 150 users, mostly senior management of Enron, and contains over 500k individual emails. This data was originally made public, by the Federal Energy Regulatory Commission during its investigation. You can find the source data here:  https://www.cs.cmu.edu/~enron/
@@ -29,13 +29,13 @@ Given the above complexity, these plots didn't really let me see anything partic
 ![map2](images/map2.png)
 
 
-At the center of the second map, is one of the head traders for Enron, specializing in Natural Gas.  Less than a week before the bankruptcy was declared he earned the single highest bonus ever to be paid to a single trader at Enron; some $8mm+.  Individuals with that much influence are often considered to be high risk for fraud; simply, the number of connections in the organization makes it easy to hide activity or for the individuals to exert influence where there may be a conflict on interest, both enabling fraud.  
+At the center of the second map, is one of the head traders for Enron, specializing in Natural Gas.  Less than a week before the bankruptcy was declared he earned the single highest bonus ever to be paid to a single trader at Enron; some $8mm+.  Individuals with that much influence are often considered to be high risk for fraud; simply, the number of connections in the organization makes it easy to hide activity or for the individuals to exert influence where there may be a conflict of interest, both enabling fraud.  
 
-I was able to use NLTK to create frequency distributions for the common words used in the whole dataset. Even from something simple as this can show, visually that something was going on.  Using this distribution, I was able to create a wordcloud to cleary display my findings.  
+I was able to use NLTK to create frequency distributions for the common words used in the whole dataset. Even from something simple as this can show visually that something was going on.  Using this distribution, I was able to create a wordcloud to clearly display my findings.  
 ![cloud1](images/cloud1.png)
 
 
-I have spent over a decade in corporate finance and from personal expereince, the word 'problems' is not one people use in emails in a healthy organization.The __Kathy__ who is front and center of the cloud was implicated in the Enron scandal, over $200,000 was clawed back from her personal bank accounts for her participation in fraudlent deals.  
+I have spent over a decade in corporate finance and from personal experience, the word 'problems' is not one people use in emails in a healthy organization.The __kathy__ who is front and center of the cloud was implicated in the Enron scandal, over $200,000 was clawed back from her personal bank accounts for her participation in fraudulent deals.  
 
 
 
@@ -55,9 +55,9 @@ The goal here is hopefully to sort everything into sections, people and importan
 
 K-means is a clustering algorithm that aims to partition the data into _k_ clusters. These clusters are organized by separating each observation and linking it to the _cluster_ with the nearest mean.
 
-I'll actually use the mini-batch Kmeans algorithm from sklearn. This way I won't read the whole dataset into memory at the same time. Given the data size that I'm working with, this will save quite a bit of computational efficiency.  I initalized the algorithm with 2 clusters, a batch size of 500, and ran 100 iterations.
+I'll actually use the mini-batch K-means algorithm from sklearn. This way I won't read the whole dataset into memory at the same time. Given the data size that I'm working with, this will save quite a bit of computational efficiency.  I initialized the algorithm with 2 clusters, a batch size of 500, and ran 100 iterations.
 
-This is a great oppoirtunity to review the same scatter plot we used before, though this time color coding the clusters.
+This is a great opportunity to review the same scatter plot we used before, though this time color coding the clusters.
 ![cluster](images/cluster2.png)
 
 You can see that the clustering algorithm did a fair job separating the important things from the nonsense.  One can extrapolate that given the computing power to run the whole dataset that it would do even better.
@@ -78,13 +78,14 @@ weighted avg       0.97      0.97      0.97     99111
 ![confusion](images/confusion1.png)
 
 ## Conclusion and Implications
-This means the model can be used as an efficient method to review email's in order to find people worth investigating.
-The Kmeans algorithm separated the email body into people and words. These people who were say in the top 20, were all implicated in some way during the Enron scandal in 2001. Then to make our future selves more efficient we took those clusters, called them 'true' labels in the KNN algorithm and used that to look at the words. With over 97% accuracy we were able to classify these words as important or not.
+This means the model can be used as an efficient method to review emails in order to find people worth investigating.
+The K-means algorithm separated the email body into people and words. These people who were say in the top 20, were all implicated in some way during the Enron scandal in 2001. Then to make our future selves more efficient we took those clusters, called them 'true' labels in the KNN algorithm and used that to look at the words. With over 97% accuracy we were able to classify these words as important or not.
 
-A business should be able to take new emails and find people who might be worth a second look using the model.  The application in Fraud and Risk management is very clear.  A company can use a trained algorithm like this to find the people who may be at risk of committing fraud.  It could be that the person is really in a central position and has access to a large amount of sensitive data, it could also be the person is a 'deal executor' and has significant power over the bottomline.  Whatever the reason, if an algorithm pair like this suggests a person is worth reviewing the next step would be to have a fraud analyst do a more in depth investigation.  The machine learning is great first step and frees up business resources for other activities, but it does not eliminate the need for human intervention.
+A business should be able to take new emails and find people who might be worth a second look using the model.  The application in Fraud and Risk management is very clear.  A company can use a trained algorithm like this to find the people who may be at risk of committing fraud.  It could be that the person is really in a central position and has access to a large amount of sensitive data, it could also be the person is a 'deal executor' and has significant power over the bottomline.  Whatever the reason, if an algorithm pair like this suggests a person is worth reviewing the next step would be to have a fraud analyst do a more in depth investigation.  The machine learning is a great first step and frees up business resources for other activities, but it does not eliminate the need for human intervention.
 
 ![stop](images/stop.png)
 
 ## If I had more time...
 
 I could further our work in a number of ways.  First, I could find the necessary resources to be able to run the algorithm on the full dataset.  Second, I could break our clustering and classifying into two steps: find the people of interest and then going on to look at the language they used in their emails to see if that could be a red flag for fraud in itself.  Finally, I could try a number of different clusters or neighbors to see if I could further improve model performance.
+
